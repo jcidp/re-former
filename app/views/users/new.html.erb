@@ -11,12 +11,22 @@
   <input type="submit" value="Create user">
 </form-->
 
-<%= form_tag("/users", method: "post") do %>
-  <%= label_tag("user[email]", "Email:") %>
-  <%= email_field(:user, :email) %>
-  <%= label_tag("user[username]", "Username:") %>
-  <%= text_field(:user, :username) %>
-  <%= label_tag("user[password]", "Password:") %>
-  <%= password_field(:user, :password) %>
-  <%= submit_tag("Create user") %>
+<%# form_tag("/users", method: "post") do %>
+  <%# label_tag("user[email]", "Email:") %>
+  <%# email_field(:user, :email) %>
+  <%# label_tag("user[username]", "Username:") %>
+  <%# text_field(:user, :username) %>
+  <%# label_tag("user[password]", "Password:") %>
+  <%# password_field(:user, :password) %>
+  <%# submit_tag("Create user") %>
+<%# end %>
+
+<%= form_with model: @user do |form| %>
+  <%= form.label :email %>
+  <%= form.email_field :email, placeholder: "example@email.com" %><br>
+  <%= form.label :username, "Your username:" %>
+  <%= form.text_field :username, value: "crispy chicken" %><br>
+  <%= form.label :password %>
+  <%= form.password_field :password, placeholder: "********" %><br>
+  <%= form.submit "Create user" %>
 <% end %>
